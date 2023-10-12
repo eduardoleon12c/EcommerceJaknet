@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path:'',
+    path: '',
     loadChildren: () => import("./modules/home/home.module").then(m => m.HomeModule),
   },
   {
-    path:'auth',
+    path: 'auth',
     loadChildren: () => import("./modules/auth-profile/auth-profile.module").then(m => m.AuthProfileModule),
   },
   {
@@ -20,13 +20,15 @@ export const routes: Routes = [
     path: '**',
     redirectTo: 'error/404',
   }
-];
+]
 
 @NgModule({
   // declarations: [],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule]
+  exports: [
+    RouterModule,
+  ]
 })
 export class AppRoutingModule { }

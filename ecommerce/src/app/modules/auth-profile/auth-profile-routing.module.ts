@@ -9,15 +9,15 @@ const routes: Routes = [
   {
     path: '',
     component: AuthProfileComponent,
-    children:[
+    children: [
       {
         path: 'login',
-        component: LoginComponent,
+        component: LoginComponent
       },
       {
         path: 'registro',
         // canActivate: [AuthGuard],
-        component: RegisterComponent,
+        component: RegisterComponent
       }
     ]
   }

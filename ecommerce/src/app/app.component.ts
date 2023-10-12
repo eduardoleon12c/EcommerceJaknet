@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   title = 'ecommerce';
-  ngOnInit():void {
+  ngOnInit(): void {
     // setTimeout(() => {
-    //     HOMEINITTEMPLATE($);
+    //   HOMEINITTEMPLATE($);
     // }, 50);
   }
 }
