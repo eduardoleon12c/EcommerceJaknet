@@ -1,10 +1,10 @@
 import models from '../models'
-import resource from '../resources';
-export default{
-    list: async(req,res) => {
+import resource from '../resources'
+export default {
+    list:async(req,res) => {
         try {
 
-            var TIME_NOW = req.query.TIME_NOW;
+            var TIME_NOW  = req.query.TIME_NOW;
 
             let Sliders = await models.Slider.find({state:1});
 
@@ -17,7 +17,7 @@ export default{
             Categories = Categories.map((categorie) => {
                 return resource.Categorie.categorie_list(categorie);
             })
-
+            
             let BestProducts = await models.Product.find({state: 2}).sort({"createdAt": -1});
 
             var ObjectBestProducts = [];
@@ -45,10 +45,12 @@ export default{
             });
 
             let ProductList = [];
-            for (const product of FlashSale.products) {
-                var ObjecT = await models.Product.findById({_id: product._id});
-                let VARIEDADES = await models.Variedad.findById({product: product._id});
-                ProductList.push(resource.Product.product_list(ObjecT,VARIEDADES));
+            if(FlashSale){
+                for (const product of FlashSale.products) {
+                    var ObjecT = await models.Product.findById({_id: product._id});
+                    let VARIEDADES = await models.Variedad.find({product: product._id});
+                    ProductList.push(resource.Product.product_list(ObjecT,VARIEDADES));
+                }
             }
             console.log(FlashSale);
             res.status(200).json({
@@ -61,7 +63,7 @@ export default{
             });
         } catch (error) {
             res.status(500).send({
-                message: "OCURRIO UN ERROR"
+                message:"OCURRIO ERROR"
             });
             console.log(error);
         }

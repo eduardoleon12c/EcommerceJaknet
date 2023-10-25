@@ -12,5 +12,5 @@ export default {
     Variedad,
     Slider,
     Cupone,
-    Discount,
+    Discount
 }
