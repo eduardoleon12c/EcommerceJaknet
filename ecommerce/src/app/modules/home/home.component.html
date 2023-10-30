@@ -109,8 +109,8 @@
                                         <div class="inner">
                                             <h5 class="title"><a href="single-product.html">{{ product.title }}</a></h5>
                                             <div class="product-price-variant">
-                                                <span class="price old-price">{{ product.price_pesos }} MNX</span>
-                                                <span class="price current-price">{{ getCalNewPrice(product) }} MNX</span>
+                                                <span class="price old-price">$ {{ product.price_pesos }} MNX</span>
+                                                <span class="price current-price">$ {{ getCalNewPrice(product) }} MNX</span>
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +165,7 @@
                             <div class="slick-single-layout">
                                 <div class="axil-product product-style-three">
                                     <div class="thumbnail">
-                                        <a href="single-product.html">
+                                        <a [routerLink]="[ '/landing-producto/', bestProd.slug ]">
                                             <img data-sal="fade" style="width: 255px;height: 255px;object-fit: cover;" data-sal-delay="100" data-sal-duration="1500" [src]="bestProd.imagen" alt="Product Images">
                                         </a>
                                         <div class="product-hover-action">
@@ -188,9 +188,9 @@
                                         </span>
                                                 <span class="rating-number">(18)</span>
                                             </div>
-                                            <h5 class="title"><a href="single-product.html">{{ bestProd.title }}</a></h5>
+                                            <h5 class="title"><a [routerLink]="[ '/landing-producto/', bestProd.slug ]">{{ bestProd.title }}</a></h5>
                                             <div class="product-price-variant">
-                                                <span class="price current-price">{{ bestProd.price_pesos }} MNX</span>
+                                                <span class="price current-price">$ {{ bestProd.price_pesos }} MNX</span>
                                                 <!-- <span class="price old-price">$50</span> -->
                                             </div>
                                         </div>
@@ -287,7 +287,7 @@
                                                 </div>
                                                 <h5 class="title"><a href="single-product.html">{{ our_product.title }}</a></h5>
                                                 <div class="product-price-variant">
-                                                    <span class="price current-price">{{ our_product.price_pesos }} MNX</span>
+                                                    <span class="price current-price">$ {{ our_product.price_pesos }} MNX</span>
                                                     <!-- <span class="price old-price">$49.99</span> -->
                                                 </div>
                                             </div>
@@ -338,7 +338,7 @@
                                                 </div>
                                                 <h5 class="title"><a href="single-product.html">{{ best_product.title }}</a></h5>
                                                 <div class="product-price-variant">
-                                                    <span class="price current-price">{{ best_product.price_pesos }} MNX</span>
+                                                    <span class="price current-price">$ {{ best_product.price_pesos }} MNX</span>
                                                     <!-- <span class="price old-price">$49.99</span> -->
                                                 </div>
                                             </div>
@@ -491,7 +491,7 @@
                                         <h5 class="title"><a href="single-product.html">{{ best_product.title }}</a></h5>
                                         <div class="product-price-variant">
                                             <!-- <span class="price old-price">$50</span> -->
-                                            <span class="price current-price">{{ best_product.price_pesos }} MNX</span>
+                                            <span class="price current-price">$ {{ best_product.price_pesos }} MNX</span>
                                         </div>
                                     </div>
                                     <div class="product-hover-action">
@@ -653,9 +653,9 @@
                                             </div>
                                         </div>
                                         <h3 class="product-title">{{ product_selected.title }}</h3>
-                                        <span class="price-amount" *ngIf="!product_selected.FlashSale">{{ product_selected.price_pesos }} MNX</span>
-                                        <span class="price-amount" *ngIf="product_selected.FlashSale"> <del>{{ product_selected.price_pesos }} MNX</del> </span>
-                                        <span class="price-amount" *ngIf="product_selected.FlashSale"> {{ getCalNewPrice(product_selected) }} MNX</span>
+                                        <span class="price-amount" *ngIf="!product_selected.FlashSale">$ {{ product_selected.price_pesos }} MNX</span>
+                                        <span class="price-amount" *ngIf="product_selected.FlashSale"> <del>$ {{ product_selected.price_pesos }} MNX</del> </span>
+                                        <span class="price-amount" *ngIf="product_selected.FlashSale">$ {{ getCalNewPrice(product_selected) }} MNX</span>
                                         <ul class="product-meta">
                                             <li><i class="fal fa-check"></i>In stock</li>
                                             <li><i class="fal fa-check"></i>Free delivery available</li>
