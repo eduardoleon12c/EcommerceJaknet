@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 
+declare function alertDanger([]):any;
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -32,10 +33,10 @@ export class RegisterComponent implements OnInit {
       !this.surname ||
       !this.password ||
       !this.repet_password){
-       alert("TODOS LOS CAMPOS SON REQUERIDOS");
+       alertDanger("TODOS LOS CAMPOS SON REQUERIDOS");
     }
     if(this.password != this.repet_password){
-      alert("LAS CONTRASEÑAS DEBEN SER IGUALES");
+      alertDanger("LAS CONTRASEÑAS DEBEN SER IGUALES");
     }
     let data = {
       email: this.email,
