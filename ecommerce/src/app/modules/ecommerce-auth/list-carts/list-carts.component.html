@@ -34,7 +34,7 @@
                                         </ng-container>
                                         
                                     </td>
-                                    <td class="product-price" data-title="Price"><span class="currency-symbol"></span>$ {{ cart.subtotal }} MNX</td>
+                                    <td class="product-price" data-title="Price"><span class="currency-symbol"></span>{{ cart.subtotal }} USD</td>
                                     <td class="section-cart product-quantity" data-title="Qty">
                                         <div class="pro-qty">
                                             <span class="dec qtybtn" (click)="dec(cart)">-</span>
@@ -42,7 +42,7 @@
                                             <span class="inc qtybtn" (click)="inc(cart)">+</span>
                                         </div>
                                     </td>
-                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol"></span>$ {{ cart.total }} MNX</td>
+                                    <td class="product-subtotal" data-title="Subtotal"><span class="currency-symbol"></span>{{ cart.total }} USD</td>
                                 </tr>
                             </ng-container>
                             
@@ -70,7 +70,7 @@
                                     <tbody>
                                         <tr class="order-subtotal">
                                             <td>Subtotal</td>
-                                            <td>$ {{ totalCarts }} MNX</td>
+                                            <td>{{ totalCarts }} USD</td>
                                         </tr>
                                         <tr class="order-shipping">
                                             <td>Shipping</td>
@@ -95,7 +95,7 @@
                                         </tr>
                                         <tr class="order-total">
                                             <td>Total</td>
-                                            <td class="order-total-amount">$ {{ totalCarts }} MNX</td>
+                                            <td class="order-total-amount">{{ totalCarts }} USD</td>
                                         </tr>
                                     </tbody>
                                 </table>

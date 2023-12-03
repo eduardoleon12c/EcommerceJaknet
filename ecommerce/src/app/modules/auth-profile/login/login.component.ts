@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
       console.log(resp);
       if(!resp.error && resp){
         // QUE EL USUARIO INGRESO CON EXITO
-        this.router.navigate(["/"]);
+        // this.router.navigate(["/"]);
+        location.reload();
       }else{
         alertDanger(resp.error.message);
       }

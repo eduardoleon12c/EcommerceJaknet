@@ -12,12 +12,14 @@ export class HeaderComponent implements OnInit {
   listCarts:any = [];
 
   totalCarts:any = 0;
+  user:any;
   constructor(
     public router: Router,
     public cartService: CartService,
   ) { }
 
   ngOnInit(): void {
+    this.user = this.cartService._authService.user;
     this.cartService.currentDataCart$.subscribe((resp:any) => {
       console.log(resp);
       this.listCarts = resp;
@@ -36,5 +38,9 @@ export class HeaderComponent implements OnInit {
   
   isHome(){
     return this.router.url == "" || this.router.url == "/" ? true : false;
+  }
+
+  logout(){
+    this.cartService._authService.logout();
   }
 }

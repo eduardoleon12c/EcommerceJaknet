@@ -1,39 +1,31 @@
-//invocacion de modulos a utilizar
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
 import mongoose from 'mongoose'
 import router from './router'
 
+//CONEXION A LA BASE DE DATOS
 
-//Configurar base de datos
 mongoose.Promise = global.Promise;
-const dbUrL = "mongodb://localhost:27017/ecommerce_jaknet";
+const dbUrL = "mongodb://127.0.0.1:27017/ecommerce_jaknet";
 mongoose.connect(
-    dbUrL ,{
-        useNewUrlParser: true,
+    dbUrL , {
+        useNewUrlParser:  true,
         useUnifiedTopology: true
     }
-).then(mongoose => console.log("Conexion con la BD en el puerto 27017"))
+).then(mongoose => console.log("CONECTADO A LA BD EN EL PUERTO 27017"))
 .catch(err => console.log(err));
 
-//invocamos express
-const app = express()
+const app = express();
+app.use(cors());
 
-//Utilizamos cors
-app.use(cors())
-
-//Configuramos procesamiento de datos
-app.use(express.urlencoded({extended:true}))
-app.use(express.json())
-
-//Carpeta public para los archivos estaticos
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname,'public')))
-
-//rutas
 app.use('/api/',router)
 
-//Puerto del servidor
-app.listen(3000, ()=>{
-    console.log('Server corriendo en el puerto 3000')
+app.set('port',process.env.PORT || 3000);
+
+app.listen(app.get('port'), () => {
+    console.log("EL SERVIDOR SE EJECUTO PERFECTAMENTE EN EL PUERTO 3000");
 })
