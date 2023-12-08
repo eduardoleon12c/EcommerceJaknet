@@ -9,13 +9,13 @@
             <div class="container">
                 <div class="slider-offset-left">
                     <div class="row row--20">
-                        <div class="col-lg-9">
+                        <div class="col-lg-12">
                             <div class="slider-box-wrap">
                                 <div class="slider-activation-one axil-slick-dots">
                                     <ng-container *ngFor="let slider of sliders">
                                         <div class="single-slide slick-slide">
                                             <div class="main-slider-content">
-                                                <span class="subtitle"><i class="fal fa-badge-percent"></i> Mega Deal</span>
+                                                <!-- <span class="subtitle"><i class="fal fa-badge-percent"></i>Descubre</span> -->
                                                 <h1 class="title">{{ slider.title }}</h1>
                                                 <div class="shop-btn" *ngIf="slider.link">
                                                     <a [href]="slider.link" class="axil-btn">AQUI! <i class="fal fa-long-arrow-right"></i></a>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <!-- <div class="col-lg-3">
                             <div class="slider-product-box">
                                 <div class="product-thumb">
                                     <a href="single-product.html">
@@ -64,7 +64,7 @@
                                 <h6 class="title"><a href="single-product.html">Stylish Leather Bag</a></h6>
                                 <span class="price">$29.99</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                             <div class="slick-single-layout">
                                 <div class="axil-product product-style-four">
                                     <div class="thumbnail">
-                                        <a [routerLink]="[ '/landing-producto/', product.slug ]">
+                                        <a [routerLink]="[ '/landing-producto/', product.slug ]" [queryParams]="{_id: FlashSale._id}">
                                             <img data-sal="zoom-out" style="width: 255px;height: 255px;object-fit: cover;" data-sal-delay="100" data-sal-duration="1500" [src]="product.imagen" alt="Product Images">
                                         </a>
                                         <div class="label-block label-right" *ngIf="FlashSale.type_discount == 1">
@@ -100,14 +100,14 @@
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
                                                 <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                                <li class="select-option"><a href="cart.html">Add to Cart</a></li>
+                                                <li class="select-option"><a href="#" onclick="return false;" (click)="addCart(product,1)">Add to Cart</a></li>
                                                 <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal" (click)="OpenModal(product,FlashSale)"><i class="far fa-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a [routerLink]="[ '/landing-producto/', product.slug ]">{{ product.title }}</a></h5>
+                                            <h5 class="title"><a [routerLink]="[ '/landing-producto/', product.slug ]" [queryParams]="{_id: FlashSale._id}">{{ product.title }}</a></h5>
                                             <div class="product-price-variant">
                                                 <span class="price old-price">$ {{ product.price_pesos }} MNX</span>
                                                 <span class="price current-price">$ {{ getCalNewPrice(product) }} MNX</span>
@@ -129,16 +129,16 @@
         <div class="axil-categorie-area bg-color-white axil-section-gapcommon">
             <div class="container">
                 <div class="section-title-wrapper">
-                    <span class="title-highlighter highlighter-secondary"> <i class="far fa-tags"></i> Categories</span>
-                    <h2 class="title">Browse by Category</h2>
+                    <span class="title-highlighter highlighter-secondary"> <i class="far fa-tags"></i> Categorias</span>
+                    <h2 class="title">Consulta las categorías de nuestros servicios</h2>
                 </div>
                 <div class="categrie-product-activation slick-layout-wrapper--15 axil-slick-arrow  arrow-top-slide">
 
                     <ng-container *ngFor="let categorie of categories">
                         <div class="slick-single-layout">
                             <div class="categrie-product" data-sal="zoom-out" data-sal-delay="200" data-sal-duration="500">
-                                <a href="#">
-                                    <img class="img-fluid" [src]="categorie.imagen_home" width="64px" alt="product categorie">
+                                <a href="https://www.jaknet.com.mx/#services" target="_blank">
+                                    <img class="img-fluid" [src]="categorie.imagen_home" width="64px" height="20px" alt="product categorie">
                                     <h6 class="cat-title">{{ categorie.title }}</h6>
                                 </a>
                             </div>
@@ -157,41 +157,45 @@
             <div class="container">
                 <div class="product-area pb--50">
                     <div class="section-title-wrapper">
-                        <span class="title-highlighter highlighter-primary"> <i class="far fa-shopping-basket"></i>This Month</span>
-                        <h2 class="title">Best Selling Products</h2>
+                        <span class="title-highlighter highlighter-primary"> <i class="far fa-shopping-basket"></i>Este mes</span>
+                        <h2 class="title">¡Lo más vendido!</h2>
                     </div>
                     <div class="new-arrivals-product-activation-2 slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide product-slide-mobile">
                         <ng-container *ngFor="let bestProd of bestProducts">
                             <div class="slick-single-layout">
                                 <div class="axil-product product-style-three">
                                     <div class="thumbnail">
-                                        <a [routerLink]="[ '/landing-producto/', bestProd.slug ]">
+                                        <a [routerLink]="[ '/landing-producto/', bestProd.slug ]" [queryParams]="getRouterDiscount(bestProd)">
                                             <img data-sal="fade" style="width: 255px;height: 255px;object-fit: cover;" data-sal-delay="100" data-sal-duration="1500" [src]="bestProd.imagen" alt="Product Images">
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
                                                 <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                                <li class="select-option"><a href="cart.html">Add to Cart</a></li>
+                                                <li class="select-option"><a href="#" onclick="return false;" (click)="addCart(bestProd)">Add to Cart</a></li>
                                                 <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal" (click)="OpenModal(bestProd)"><i class="far fa-eye"></i></a></li>
                                             </ul>
+                                        </div>
+                                        <div class="label-block label-right" *ngIf="bestProd.campaing_discount">
+                                            <div class="product-badget" *ngIf="bestProd.campaing_discount.type_discount == 1">{{ bestProd.campaing_discount }}% Off</div>
+                                            <div class="product-badget" *ngIf="bestProd.campaing_discount.type_discount == 2">- {{ bestProd.campaing_discount }}MXN Off</div>
                                         </div>
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
                                             <div class="product-rating">
                                                 <span class="icon">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                        </span>
-                                                <span class="rating-number">(18)</span>
+                                                    <i class="fas fa-star" [ngClass]="{ 'start-del' : bestProd.avg_review < 1 }"></i>
+                                                    <i class="fas fa-star" [ngClass]="{ 'start-del' : bestProd.avg_review < 2 }"></i>
+                                                    <i class="fas fa-star" [ngClass]="{ 'start-del' : bestProd.avg_review < 3 }"></i>
+                                                    <i class="fas fa-star" [ngClass]="{ 'start-del' : bestProd.avg_review < 4 }"></i>
+                                                    <i class="fas fa-star" [ngClass]="{ 'start-del' : bestProd.avg_review < 5 }"></i>
+                                                </span>
+                                                <span class="rating-number">({{ bestProd.count_review }})</span>
                                             </div>
-                                            <h5 class="title"><a [routerLink]="[ '/landing-producto/', bestProd.slug ]">{{ bestProd.title }}</a></h5>
+                                            <h5 class="title"><a [routerLink]="[ '/landing-producto/', bestProd.slug ]" [queryParams]="getRouterDiscount(bestProd)">{{ bestProd.title }}</a></h5>
                                             <div class="product-price-variant">
-                                                <span class="price current-price">$ {{ bestProd.price_pesos }} MNX</span>
-                                                <!-- <span class="price old-price">$50</span> -->
+                                                <span class="price old-price" *ngIf="bestProd.campaing_discount">$ {{ bestProd.price_pesos }} MXN</span>
+                                                <span class="price current-price">$ {{ bestProd.price_pesos - getDiscountProduct(bestProd) }} MXN</span>
                                             </div>
                                         </div>
                                     </div>
@@ -214,24 +218,24 @@
                         <div class="col-xl-5 col-lg-6">
                             <div class="poster-countdown-content">
                                 <div class="section-title-wrapper">
-                                    <span class="title-highlighter highlighter-secondary"> <i class="fal fa-headphones-alt"></i> Don’t Miss!!</span>
-                                    <h2 class="title">Enhance Your Music Experience</h2>
+                                    <span class="title-highlighter highlighter-secondary"> <i class="fal fa-headphones-alt"></i> Nuestro lema!!</span>
+                                    <h2 class="title">Soluciones Tecnológicas Enfocadas al Cliente</h2>
                                 </div>
-                                <div class="poster-countdown countdown mb--40"></div>
-                                <a href="#" class="axil-btn btn-bg-primary">Check it Out!</a>
+                                <div class="mb--40"></div>
+                                <a href="https://www.jaknet.com.mx/contacto" target="_blank" class="axil-btn btn-bg-primary">Contáctanos!</a>
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-6">
-                            <div class="poster-countdown-thumbnail">
-                                <img src="./assets/images/product/poster/poster-03.png" alt="Poster Product">
-                                <div class="music-singnal">
+                            <img src="./assets/images/product/electric/product-03.png" style="width:700px;" alt="Poster Product">
+                            <!-- <div class="poster-countdown-thumbnail"> -->
+                                <!-- <div class="music-singnal">
                                     <div class="item-circle circle-1"></div>
                                     <div class="item-circle circle-2"></div>
                                     <div class="item-circle circle-3"></div>
                                     <div class="item-circle circle-4"></div>
                                     <div class="item-circle circle-5"></div>
-                                </div>
-                            </div>
+                                </div> -->
+                            <!-- </div> -->
                         </div>
                     </div>
                 </div>
@@ -243,8 +247,8 @@
         <div class="axil-product-area bg-color-white axil-section-gap">
             <div class="container">
                 <div class="section-title-wrapper">
-                    <span class="title-highlighter highlighter-primary"> <i class="fal fa-store"></i> Our Products</span>
-                    <h2 class="title">Explore our Products</h2>
+                    <span class="title-highlighter highlighter-primary"> <i class="fal fa-store"></i> Servicios</span>
+                    <h2 class="title">Explora nuestros servicios</h2>
                 </div>
                 <div class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
                     <div class="slick-single-layout">
@@ -258,15 +262,16 @@
                                                 <img data-sal="zoom-out" style="width: 255px;height: 255px;object-fit: cover" data-sal-delay="200" data-sal-duration="800" class="main-img" [src]="our_product.imagen" alt="Product Images">
                                                 <img class="hover-img" style="width: 255px;height: 255px;object-fit: cover" [src]="our_product.imagen_two" alt="Product Images">
                                             </a>
-                                            <!-- <div class="label-block label-right">
-                                                <div class="product-badget">20% Off</div>
-                                            </div> -->
+                                            <div class="label-block label-right" *ngIf="our_product.campaing_discount">
+                                                <div class="product-badget" *ngIf="our_product.campaing_discount.type_discount == 1">{{ our_product.campaing_discount }}% Off</div>
+                                                <div class="product-badget" *ngIf="our_product.campaing_discount.type_discount == 2">- {{ our_product.campaing_discount }}MXN Off</div>
+                                            </div>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
                                                     <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal" (click)="OpenModal(our_product)"><i class="far fa-eye"></i></a></li>
                                                     <li class="select-option">
-                                                        <a [routerLink]="[ '/landing-producto/', our_product.slug ]">
-                                                            Add to Cart
+                                                        <a href="#" onclick="return false;" (click)="addCart(our_product)">
+                                                            Añadir al carrito
                                                         </a>
                                                     </li>
                                                     <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
@@ -277,17 +282,19 @@
                                             <div class="inner">
                                                 <div class="product-rating">
                                                     <span class="icon">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </span>
-                                                    <span class="rating-number">(64)</span>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : our_product.avg_review < 1 }"></i>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : our_product.avg_review < 2 }"></i>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : our_product.avg_review < 3 }"></i>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : our_product.avg_review < 4 }"></i>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : our_product.avg_review < 5 }"></i>
+                                                    </span>
+                                                    <span class="rating-number">({{ our_product.count_review }})</span>
                                                 </div>
                                                 <h5 class="title"><a [routerLink]="[ '/landing-producto/', our_product.slug ]">{{ our_product.title }}</a></h5>
                                                 <div class="product-price-variant">
-                                                    <span class="price current-price">$ {{ our_product.price_pesos }} MNX</span>
+                                                    <span class="price old-price" *ngIf="our_product.campaing_discount">$ {{ our_product.price_pesos }} MXN</span>
+                                                <span class="price current-price">$ {{ our_product.price_pesos - getDiscountProduct(our_product) }} MXN</span>
+                                                    <!-- <span class="price current-price">$ {{ our_product.price_pesos }} MNX</span> -->
                                                     <!-- <span class="price old-price">$49.99</span> -->
                                                 </div>
                                             </div>
@@ -316,8 +323,8 @@
                                                 <ul class="cart-action">
                                                     <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal" (click)="OpenModal(best_product)"><i class="far fa-eye"></i></a></li>
                                                     <li class="select-option">
-                                                        <a [routerLink]="[ '/landing-producto/', best_product.slug ]">
-                                                            Add to Cart
+                                                        <a href="#" onclick="return false;" (click)="addCart(best_product)">
+                                                            Añadir al carrito
                                                         </a>
                                                     </li>
                                                     <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
@@ -328,13 +335,13 @@
                                             <div class="inner">
                                                 <div class="product-rating">
                                                     <span class="icon">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </span>
-                                                    <span class="rating-number">(64)</span>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : best_product.avg_review < 1 }"></i>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : best_product.avg_review < 2 }"></i>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : best_product.avg_review < 3 }"></i>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : best_product.avg_review < 4 }"></i>
+                                                        <i class="fas fa-star" [ngClass]="{ 'start-del' : best_product.avg_review < 5 }"></i>
+                                                    </span>
+                                                    <span class="rating-number">({{ best_product.count_review }})</span>
                                                 </div>
                                                 <h5 class="title"><a [routerLink]="[ '/landing-producto/', best_product.slug ]">{{ best_product.title }}</a></h5>
                                                 <div class="product-price-variant">
@@ -354,7 +361,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center mt--20 mt_sm--0">
-                        <a href="shop.html" class="axil-btn btn-bg-lighter btn-load-more">View All Products</a>
+                        <a href="https://www.jaknet.com.mx/#services" target="_blank" class="axil-btn btn-bg-lighter btn-load-more">Checa nuestro catálogo</a>
                     </div>
                 </div>
 
@@ -363,13 +370,13 @@
         <!-- End Expolre Product Area  -->
 
         <!-- Start Testimonila Area  -->
-        <div class="axil-testimoial-area axil-section-gap bg-vista-white">
+        <!-- <div class="axil-testimoial-area axil-section-gap bg-vista-white">
             <div class="container">
                 <div class="section-title-wrapper">
                     <span class="title-highlighter highlighter-secondary"> <i class="fal fa-quote-left"></i>Testimonials</span>
                     <h2 class="title">Users Feedback</h2>
                 </div>
-                <!-- End .section-title -->
+                End .section-title
                 <div class="testimonial-slick-activation testimonial-style-one-wrapper slick-layout-wrapper--20 axil-slick-arrow arrow-top-slide">
                     <div class="slick-single-layout testimonial-style-one">
                         <div class="review-speech">
@@ -388,9 +395,9 @@
                                 <h6 class="title">James C. Anderson</h6>
                             </div>
                         </div>
-                        <!-- End .thumbnail -->
+                         End .thumbnail 
                     </div>
-                    <!-- End .slick-single-layout -->
+                    End .slick-single-layout
                     <div class="slick-single-layout testimonial-style-one">
                         <div class="review-speech">
                             <p>“ It’s amazing how much easier it has been to
@@ -408,9 +415,9 @@
                                 <h6 class="title">James C. Anderson</h6>
                             </div>
                         </div>
-                        <!-- End .thumbnail -->
+                        End .thumbnail
                     </div>
-                    <!-- End .slick-single-layout -->
+                    End .slick-single-layout
                     <div class="slick-single-layout testimonial-style-one">
                         <div class="review-speech">
                             <p>“ It’s amazing how much easier it has been to
@@ -428,9 +435,9 @@
                                 <h6 class="title">James C. Anderson</h6>
                             </div>
                         </div>
-                        <!-- End .thumbnail -->
+                        End .thumbnail
                     </div>
-                    <!-- End .slick-single-layout -->
+                    End .slick-single-layout
                     <div class="slick-single-layout testimonial-style-one">
                         <div class="review-speech">
                             <p>“ It’s amazing how much easier it has been to
@@ -448,21 +455,21 @@
                                 <h6 class="title">James C. Anderson</h6>
                             </div>
                         </div>
-                        <!-- End .thumbnail -->
+                        End .thumbnail
                     </div>
-                    <!-- End .slick-single-layout -->
+                    End .slick-single-layout
 
                 </div>
             </div>
         </div>
-        <!-- End Testimonila Area  -->
+        End Testimonila Area  -->
 
         <!-- Start New Arrivals Product Area  -->
         <div class="axil-new-arrivals-product-area bg-color-white axil-section-gap pb--50">
             <div class="container">
                 <div class="section-title-wrapper">
-                    <span class="title-highlighter highlighter-primary"><i class="far fa-shopping-basket"></i> This Week’s</span>
-                    <h2 class="title">New Arrivals</h2>
+                    <span class="title-highlighter highlighter-primary"><i class="far fa-shopping-basket"></i>Recientes</span>
+                    <h2 class="title">Nuevos productos</h2>
                 </div>
                 <div class="new-arrivals-product-activation slick-layout-wrapper--30 axil-slick-arrow  arrow-top-slide">
                     <ng-container *ngFor="let best_product of bestProducts">
@@ -478,7 +485,7 @@
                                 </div>
                                 <div class="product-content">
                                     <div class="inner">
-                                        <div class="color-variant-wrapper">
+                                        <!-- <div class="color-variant-wrapper">
                                             <ul class="color-variant">
                                                 <li class="color-extra-01 active"><span><span class="color"></span></span>
                                                 </li>
@@ -487,7 +494,7 @@
                                                 <li class="color-extra-03"><span><span class="color"></span></span>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> -->
                                         <h5 class="title"><a [routerLink]="[ '/landing-producto/', best_product.slug ]">{{ best_product.title }}</a></h5>
                                         <div class="product-price-variant">
                                             <!-- <span class="price old-price">$50</span> -->
@@ -497,7 +504,7 @@
                                     <div class="product-hover-action">
                                         <ul class="cart-action justify-content-center">
                                             <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">Add to Cart</a></li>
+                                            <li class="select-option"><a href="#" onclick="return false;" (click)="addCart(best_product)">Añadir al carrito</a></li>
                                             <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal" (click)="OpenModal(best_product)"><i class="far fa-eye"></i></a></li>
                                         </ul>
                                     </div>
@@ -516,16 +523,16 @@
         <!-- Start Axil Newsletter Area  -->
         <div class="axil-newsletter-area axil-section-gap pt--0">
             <div class="container">
-                <div class="etrade-newsletter-wrapper bg_image bg_image--12">
+                <div class="etrade-newsletter-wrapper bg_image bg_image--11">
                     <div class="newsletter-content">
-                        <span class="title-highlighter highlighter-primary2"><i class="fas fa-envelope-open"></i>Newsletter</span>
-                        <h2 class="title mb--40 mb_sm--30">Get weekly update</h2>
-                        <div class="input-group newsletter-form">
+                        <!-- <span class="title-highlighter highlighter-primary2"><i class="fas fa-envelope-open"></i>Correo</span> -->
+                        <!-- <h2 class="title mb--40 mb_sm--30">¿Quieres más información?</h2> -->
+                        <!-- <div class="input-group newsletter-form">
                             <div class="position-relative newsletter-inner mb--15">
                                 <input placeholder="example@gmail.com" type="text">
                             </div>
-                            <button type="submit" class="axil-btn mb--15">Subscribe</button>
-                        </div>
+                            <button type="submit" class="axil-btn mb--15">Contáctanos</button>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -538,15 +545,15 @@
 
     <div class="service-area">
         <div class="container">
-            <div class="row row-cols-xl-4 row-cols-sm-2 row-cols-1 row--20">
+            <div class="row row-cols-xl-3 row-cols-sm-2 row-cols-1 row--20">
                 <div class="col">
                     <div class="service-box service-style-2">
                         <div class="icon">
                             <img src="./assets/images/icons/service1.png" alt="Service">
                         </div>
                         <div class="content">
-                            <h6 class="title">Fast &amp; Secure Delivery</h6>
-                            <p>Tell about your service.</p>
+                            <h6 class="title">Entrega rápida y segura</h6>
+                            <p>Cuéntanos sobre tu proyecto.</p>
                         </div>
                     </div>
                 </div>
@@ -556,12 +563,12 @@
                             <img src="./assets/images/icons/service2.png" alt="Service">
                         </div>
                         <div class="content">
-                            <h6 class="title">Money Back Guarantee</h6>
-                            <p>Within 10 days.</p>
+                            <h6 class="title">Tu dinero está a salvo</h6>
+                            <p>Confía en nosotros.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     <div class="service-box service-style-2">
                         <div class="icon">
                             <img src="./assets/images/icons/service3.png" alt="Service">
@@ -571,15 +578,15 @@
                             <p>No question ask.</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col">
                     <div class="service-box service-style-2">
                         <div class="icon">
                             <img src="./assets/images/icons/service4.png" alt="Service">
                         </div>
                         <div class="content">
-                            <h6 class="title">Pro Quality Support</h6>
-                            <p>24/7 Live support.</p>
+                            <h6 class="title">¿Necesitas asesoría?</h6>
+                            <p>Contáctanos.</p>
                         </div>
                     </div>
                 </div>
@@ -649,7 +656,7 @@
                                                 <img src="assets/images/icons/rate.png" alt="Rate Images">
                                             </div>
                                             <div class="review-link">
-                                                <a href="#">(<span>1</span> customer reviews)</a>
+                                                <a href="#" onclick="return false;">(<span>1</span> customer reviews)</a>
                                             </div>
                                         </div>
                                         <h3 class="product-title">{{ product_selected.title }}</h3>
@@ -657,9 +664,9 @@
                                         <span class="price-amount" *ngIf="product_selected.FlashSale"> <del>$ {{ product_selected.price_pesos }} MNX</del> </span>
                                         <span class="price-amount" *ngIf="product_selected.FlashSale">$ {{ getCalNewPrice(product_selected) }} MNX</span>
                                         <ul class="product-meta">
-                                            <li><i class="fal fa-check"></i>In stock</li>
-                                            <li><i class="fal fa-check"></i>Free delivery available</li>
-                                            <li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>
+                                            <li><i class="fal fa-check"></i>En stock</li>
+                                            <!-- <li><i class="fal fa-check"></i>Free delivery available</li>
+                                            <li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li> -->
                                         </ul>
                                         <p class="description">
                                             {{ product_selected.resumen }}
@@ -706,7 +713,7 @@
 
                                             <!-- Start Product Action  -->
                                             <ul class="product-action d-flex-center mb--0">
-                                                <li class="add-to-cart"><a href="cart.html" class="axil-btn btn-bg-primary">Add to Cart</a></li>
+                                                <li class="add-to-cart"><a href="cart.html" class="axil-btn btn-bg-primary">Añadir al carrito</a></li>
                                                 <li class="wishlist"><a href="wishlist.html" class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
                                             </ul>
                                             <!-- End Product Action  -->

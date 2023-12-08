@@ -71,4 +71,11 @@ export class CartService {
     let URL = URL_SERVICIOS+"cart/aplicar_cupon";
     return this.http.post(URL,data,{headers: headers});
   }
+
+  searchProduct(data:any){
+    let headers = new HttpHeaders({'token': this._authService.token});
+    let TIME_NOW = new Date().getTime();
+    let URL = URL_SERVICIOS+"home/search_product?TIME_NOW="+TIME_NOW;
+    return this.http.post(URL,data,{headers: headers});
+  }
 }
