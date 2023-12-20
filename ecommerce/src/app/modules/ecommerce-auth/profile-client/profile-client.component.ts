@@ -26,7 +26,7 @@ export class ProfileClientComponent implements OnInit {
   telefono:any = null;
   email:any = null;
   nota:any = null;
-  pais:any = 'Peru'; 
+  pais:any = 'México'; 
   address_client_selected:any = null;
 
   // datos del cliente

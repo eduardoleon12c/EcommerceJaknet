@@ -15,7 +15,7 @@ export class ListCartsComponent implements OnInit {
   listCarts:any = [];
 
   totalCarts:any = 0;
-
+  subtotalCarts:any = 0;
   code_cupon:any = null;
   constructor(
     public router: Router,
@@ -23,13 +23,16 @@ export class ListCartsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.lisCarts();
     setTimeout(() => {
       sectionCart();
     }, 25);
+
     this.cartService.currentDataCart$.subscribe((resp:any) => {
       console.log(resp);
       this.listCarts = resp;
       this.totalCarts = this.listCarts.reduce((sum:any,item:any) => sum + item.total, 0);
+      this.subtotalCarts = this.listCarts.reduce((sum:any,item:any)=> sum + item.subtotal, 0);
     })
   }
   dec(cart:any){
@@ -39,7 +42,7 @@ export class ListCartsComponent implements OnInit {
     }
 
     cart.cantidad = cart.cantidad - 1;
-    cart.subtotal = cart.price_unitario * cart.cantidad;
+    cart.subtotal = cart.price_unitario ;
     cart.total = cart.price_unitario * cart.cantidad;
 
     
@@ -62,7 +65,7 @@ export class ListCartsComponent implements OnInit {
     console.log(cart,"INC");
 
     cart.cantidad = cart.cantidad + 1;
-    cart.subtotal = cart.price_unitario * cart.cantidad;
+    cart.subtotal = cart.price_unitario;
     cart.total = cart.price_unitario * cart.cantidad;
 
     let data = {

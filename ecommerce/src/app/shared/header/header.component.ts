@@ -1,33 +1,53 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { CartService } from 'src/app/modules/ecommerce-guest/_services/cart.service';
+import { EcommerceGuestService } from 'src/app/modules/ecommerce-guest/_services/ecommerce-guest.service';
+import { HomeService } from 'src/app/modules/home/_services/home.service';
+
+declare var $:any
+declare function HOMEINITTEMPLATE([]):any;
+declare function alertDanger([]):any;
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,AfterViewInit {
 
   listCarts:any = [];
 
   totalCarts:any = 0;
   user:any;
-
+  categories:any = [];
   search_product:any = null;
   products_search:any = [];
+  categories_selecteds:any = [];
+  our_products:any = [];
+  bestProducts:any=[];
 
   source:any;
   @ViewChild("filter") filter?:ElementRef;
   constructor(
     public router: Router,
     public cartService: CartService,
+    public homeService: HomeService,
+    public ecommerceGuest:EcommerceGuestService,
   ) { }
 
   ngOnInit(): void {
     this.user = this.cartService._authService.user;
+    let TIME_NOW = new Date().getTime();
+    this.homeService.listHome(TIME_NOW).subscribe((resp:any) => {
+      this.categories = resp.categories;
+      this.our_products = resp.our_products;
+      this.bestProducts = resp.best_products;
+      setTimeout(() => {
+        HOMEINITTEMPLATE($);
+      }, 50);
+    });
     this.cartService.currentDataCart$.subscribe((resp:any) => {
       console.log(resp);
       this.listCarts = resp;
@@ -84,6 +104,54 @@ export class HeaderComponent implements OnInit {
       }
     }
     return 0;
+  }
+
+  dec(cart:any){
+    if(cart.cantidad - 1 == 0){
+      alertDanger("NO PUEDES DISMINUIR UN PRODUCTO A CERO");
+      return;
+    }
+
+    cart.cantidad = cart.cantidad - 1;
+    cart.subtotal = cart.price_unitario ;
+    cart.total = cart.price_unitario * cart.cantidad;
+
+    
+    // AQUI VA LA FUNCION PARA ENVIARLO AL SERVICIE O BACKEND
+    console.log(cart,"DEC");
+    let data = {
+      _id: cart._id,
+      cantidad: cart.cantidad,
+      subtotal: cart.subtotal,
+      total: cart.total,
+      variedad: cart.variedad ? cart.variedad._id : null,
+      product: cart.product._id,
+    }
+    this.cartService.updateCart(data).subscribe((resp:any) => {
+      console.log(resp);
+    })
+  }
+
+  inc(cart:any) {
+    console.log(cart,"INC");
+
+    cart.cantidad = cart.cantidad + 1;
+    cart.subtotal = cart.price_unitario;
+    cart.total = cart.price_unitario * cart.cantidad;
+
+    let data = {
+      _id: cart._id,
+      cantidad: cart.cantidad,
+      subtotal: cart.subtotal,
+      total: cart.total,
+      variedad: cart.variedad ? cart.variedad._id : null,
+      product: cart.product._id,
+    }
+
+    this.cartService.updateCart(data).subscribe((resp:any) => {
+      console.log(resp);
+    })
+    // AQUI VA LA FUNCION PARA ENVIARLO AL SERVICIE O BACKEND
   }
 
   removeCart(cart:any){

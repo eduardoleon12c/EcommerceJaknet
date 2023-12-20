@@ -33,7 +33,7 @@ export class FiltersProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.ecommerceGuest.configInitial().subscribe((resp:any) => {
-      console.log(resp);
+      console.log(resp); 
       this.categories = resp.categories;
       this.variedades = resp.variedades;
     })
@@ -101,7 +101,7 @@ export class FiltersProductsComponent implements OnInit {
   getDiscountProduct(product:any){
     if(product.campaing_discount){
       if(product.campaing_discount.type_discount == 1){// 1 es porcentaje
-        return product.price_usd*product.campaing_discount.discount*0.01;
+        return product.price_pesos*product.campaing_discount.discount*0.01;
       }else{// 2 es moneda
         return product.campaing_discount.discount;
       }
@@ -138,9 +138,9 @@ export class FiltersProductsComponent implements OnInit {
       variedad: null,
       code_cupon: null,
       code_discount: code_discount,
-      price_unitario: product.price_usd,
-      subtotal: product.price_usd - this.getDiscountProduct(product),//*1
-      total: (product.price_usd - this.getDiscountProduct(product))*1,
+      price_unitario: product.price_pesos,
+      subtotal: product.price_pesos - this.getDiscountProduct(product),//*1
+      total: (product.price_pesos - this.getDiscountProduct(product))*1,
     }
     this.cartService.registerCart(data).subscribe((resp:any) => {
       if(resp.message == 403){
@@ -173,9 +173,9 @@ export class FiltersProductsComponent implements OnInit {
   getCalNewPrice(product:any){
     if(product.campaing_discount){
       if(product.campaing_discount.type_discount == 1){
-        return product.price_usd - product.price_usd*product.campaing_discount.discount*0.01;
+        return product.price_pesos - product.price_pesos*product.campaing_discount.discount*0.01;
       }else{
-        return product.price_usd - product.campaing_discount.discount;
+        return product.price_pesos - product.campaing_discount.discount;
       }
     }
     return 0;
