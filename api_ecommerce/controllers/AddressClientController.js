@@ -27,7 +27,7 @@ export default {
         } catch (error) {
             console.log(error);
             res.status(500).send({
-                message: "HUBO UN ERROR",XMLDocument
+                message: "HUBO UN ERROR",
             });
         }
     },

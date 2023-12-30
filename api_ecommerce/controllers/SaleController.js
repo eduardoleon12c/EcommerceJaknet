@@ -27,8 +27,8 @@ async function send_email(sale_id) {
             service: 'gmail',
             host: 'smtp.gmail.com',
             auth: {
-            user: 'interstellargeeks12@gmail.com',
-                pass: 'tzolustvxhwimbkz'
+            user: 'demo@gmail.com',
+                pass: 'bilcfvchcrscbseu'
             }
         }));
 
@@ -40,7 +40,7 @@ async function send_email(sale_id) {
             var htmlToSend = template({op:true});
     
             var mailOptions = {
-                from: 'interstellargeeks12@gmail.com',
+                from: 'demo@gmail.com',
                 to: Order.user.email,
                 subject: 'Finaliza tu compra ' + Order._id,
                 html: htmlToSend

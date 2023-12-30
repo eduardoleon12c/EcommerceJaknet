@@ -10,7 +10,7 @@ export default {
                 slug: cart.product.slug,
                 imagen: 'http://localhost:3000'+'/api/products/uploads/product/'+cart.product.portada,//*
                 categorie: cart.product.categorie,
-                price_soles: cart.product.price_soles,
+                price_pesos: cart.product.price_pesos,
                 price_usd: cart.product.price_usd,
             },
             type_discount: cart.type_discount,

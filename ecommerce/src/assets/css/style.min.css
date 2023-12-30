@@ -4266,6 +4266,10 @@ button.axil-btn.wishlist-btn:hover:before {
     }
 }
 
+.text-black{
+    color: var(--color-black);
+}
+
 .service-box:before {
     content: "";
     height: 100%;

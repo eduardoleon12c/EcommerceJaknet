@@ -64,13 +64,9 @@
                                 </ul>
                             </div>
                         </div> -->
-                        <div class="toggle-list product-price-range active">
+                        <!-- <div class="toggle-list product-price-range active">
                             <h6 class="title text-white">PRECIO</h6>
                             <div class="shop-submenu">
-                                <!-- <ul>
-                                    <li class="chosen"><a href="#">30</a></li>
-                                    <li><a href="#">5000</a></li>
-                                </ul> -->
                                 <form action="#" class="mt--25">
                                     <div id="slider-range"></div>
                                     <div class="flex-center mt--20">
@@ -81,7 +77,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                         <button class="axil-btn btn-bg-primary" (click)="filterProduct()">Buscar</button>
                     </div>
                     <!-- End .axil-shop-sidebar -->
@@ -124,17 +120,18 @@
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
                                                 <!-- <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li> -->
-                                                <li class="select-option"><a href="#" onclick="return false;" (click)="addCart(product)">Solicitar</a></li>
+                                                <!-- <li class="select-option"><a href="#" onclick="return false;" (click)="addCart(product)">Solicitar</a></li> -->
+                                                <li class="select-option"><a href="https://www.jaknet.com.mx/contacto" target="_blank">Solicitar</a></li>
                                                 <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal" (click)="OpenModal(product)"><i class="far fa-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a [routerLink]="[ '/landing-producto/', product.slug ]" [queryParams]="getRouterDiscount(product)">{{ product.title }}</a></h5>
+                                            <h5 class="title text-white"><a [routerLink]="[ '/landing-producto/', product.slug ]" [queryParams]="getRouterDiscount(product)">{{ product.title }}</a></h5>
                                             <div class="product-price-variant">
-                                                <span class="price old-price" *ngIf="product.campaing_discount">{{ product.price_pesos }} MXN</span>
-                                                <span class="price current-price text-white">{{ product.price_pesos - getDiscountProduct(product) }} MXN</span>
+                                                <!-- <span class="price old-price" *ngIf="product.campaing_discount">{{ product.price_pesos }} MXN</span> -->
+                                                <!-- <span class="price current-price text-white">{{ product.price_pesos - getDiscountProduct(product) }} MXN</span> -->
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +141,7 @@
 
                     </div>
                     <div class="text-center pt--20">
-                        <a href="#" class="axil-btn btn-bg-lighter btn-load-more">Load more</a>
+                        <a href="https://www.jaknet.com.mx/contacto" class="axil-btn btn-bg-lighter btn-load-more">Contacto</a>
                     </div>
                 </div>
             </div>
@@ -234,18 +231,13 @@
                                         <div class="star-rating">
                                             <img src="assets/images/icons/rate.png" alt="Rate Images">
                                         </div>
-                                        <div class="review-link">
-                                            <a href="#">(<span>1</span> customer reviews)</a>
-                                        </div>
                                     </div>
                                     <h3 class="product-title">{{ product_selected.title }}</h3>
                                     <span class="price-amount" *ngIf="!product_selected.campaing_discount">{{ product_selected.price_usd }} USD</span>
                                     <span class="price-amount" *ngIf="product_selected.campaing_discount"> <del>{{ product_selected.price_usd }} USD</del> </span>
                                     <span class="price-amount" *ngIf="product_selected.campaing_discount"> {{ getCalNewPrice(product_selected) }} USD</span>
                                     <ul class="product-meta">
-                                        <li><i class="fal fa-check"></i>In stock</li>
-                                        <li><i class="fal fa-check"></i>Free delivery available</li>
-                                        <li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>
+                                        <li><i class="fal fa-check"></i>En stock</li>
                                     </ul>
                                     <p class="description">
                                         {{ product_selected.resumen }}

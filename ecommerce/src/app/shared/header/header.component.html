@@ -118,7 +118,7 @@
                               <span class="title">{{ user.name + " " + user.surname }}</span>
                               <ul>
                                   <li>
-                                      <a [routerLink]="[ '/perfil-del-cliente' ]" *ngIf="user">Mi Perfil</a>
+                                      <a routerLink="/perfil-del-cliente" *ngIf="user">Mi Perfil</a>
                                   </li>
                                   <!-- <li>
                                       <a href="#">Initiate return</a>
@@ -186,10 +186,10 @@
                                 <span class="rating-number"><span>{{ product.count_review }}</span> Reseñas</span>
                             </div>
                             <h6 class="product-title"><a [routerLink]="[ '/landing-producto/', product.slug ]" [queryParams]="getRouterDiscount(product)">{{ product.title }}</a></h6>
-                            <div class="product-price-variant">
+                            <!-- <div class="product-price-variant">
                                 <span class="price old-price" *ngIf="product.campaing_discount">$ {{ product.price_pesos }} MXN</span>
                                 <span class="price current-price">$ {{ product.price_pesos - getDiscountProduct(product) }} MXN</span>
-                            </div>
+                            </div> -->
                             <div class="product-cart">
                                 <!-- <a href="cart.html" class="cart-btn"><i class="fal fa-shopping-cart"></i></a> -->
                                 <!-- <a href="wishlist.html" class="cart-btn"><i class="fal fa-heart"></i></a> -->

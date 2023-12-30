@@ -35,7 +35,7 @@
                             <img src="assets/images/logo/logo.png" width="100px" alt="Hello Annie">
                         </div>
                         <div class="media-body">
-                            <h5 class="title mb-0">Bienvenido {{ name_c }}</h5>
+                            <h5 class="title mb-0 text-white">Bienvenido {{ name_c }}</h5>
                             <!-- <span class="joining-date">eTrade Member Since Sep 2020</span> -->
                         </div>
                     </div>
@@ -45,12 +45,12 @@
                         <aside class="axil-dashboard-aside">
                             <nav class="axil-dashboard-nav">
                                 <div class="nav nav-tabs" role="tablist">
-                                    <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-dashboard" role="tab" aria-selected="true"><i class="fas fa-th-large"></i>Dashboard</a>
-                                    <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-orders" role="tab" aria-selected="false"><i class="fas fa-shopping-basket"></i>Pedidos</a>
+                                    <a class="nav-item nav-link active text-primary" data-bs-toggle="tab" href="#nav-dashboard" role="tab" aria-selected="true"><i class="fas fa-th-large"></i>Dashboard</a>
+                                    <a class="nav-item nav-link text-primary" data-bs-toggle="tab" href="#nav-orders" role="tab" aria-selected="false"><i class="fas fa-shopping-basket"></i>Pedidos</a>
                                     <!-- <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-downloads" role="tab" aria-selected="false"><i class="fas fa-file-download"></i>Downloads</a> -->
-                                    <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-address" role="tab" aria-selected="false"><i class="fas fa-home"></i>Dirección</a>
-                                    <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-account" role="tab" aria-selected="false"><i class="fas fa-user"></i>Datos Personales</a>
-                                    <a class="nav-item nav-link" href="#" onclick="return false;" (click)="logout()"><i class="fal fa-sign-out"></i>Cerrar Sesión</a>
+                                    <a class="nav-item nav-link text-primary" data-bs-toggle="tab" href="#nav-address" role="tab" aria-selected="false"><i class="fas fa-home"></i>Dirección</a>
+                                    <a class="nav-item nav-link text-primary" data-bs-toggle="tab" href="#nav-account" role="tab" aria-selected="false"><i class="fas fa-user"></i>Datos Personales</a>
+                                    <a class="nav-item nav-link text-primary" href="#" onclick="return false;" (click)="logout()"><i class="fal fa-sign-out"></i>Cerrar Sesión</a>
                                 </div>
                             </nav>
                         </aside>
@@ -59,8 +59,8 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="nav-dashboard" role="tabpanel">
                                 <div class="axil-dashboard-overview">
-                                    <div class="welcome-text">¿No eres... <span>{{ name_c }}? </span> <a href="#" onclick="return false;" (click)="logout()">Cerrar Sesión</a></div>
-                                    <p>Desde el panel de su cuenta puede ver sus pedidos recientes, administrar sus direcciones de envío y editar su contraseña y los detalles de su cuenta.</p>
+                                    <div class="welcome-text text-white">¿No eres... <span>{{ name_c }}? </span> <a href="#" onclick="return false;" (click)="logout()">Cerrar Sesión</a></div>
+                                    <p class="text-white">Desde el panel de su cuenta puede ver sus pedidos recientes, administrar sus direcciones de envío y editar su contraseña y los detalles de su cuenta.</p>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-orders" role="tabpanel">
@@ -69,7 +69,7 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Order</th>
+                                                    <th scope="col">Orden</th>
                                                     <th scope="col">Fecha</th>
                                                     <th scope="col">Metodo de pago</th>
                                                     <th scope="col">Total</th>
@@ -162,27 +162,22 @@
                                     
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="nav-downloads" role="tabpanel">
-                                <div class="axil-dashboard-order">
-                                    <p>You don't have any download</p>
-                                </div>
-                            </div>
                             <div class="tab-pane fade" id="nav-address" role="tabpanel">
                                 <div class="axil-dashboard-address">
-                                    <p class="notice-text">Las siguientes direcciones se utilizarán en la página de pago de forma predeterminada.</p>
+                                    <p class="notice-text text-white">Las siguientes direcciones se utilizarán en la página de pago de forma predeterminada.</p>
                                     <div class="row row--30">
                                         <div class="col-12">
                                             <div class="axil-checkout-notice">
                                                 <div class="tab-pane" id="nav-address" role="tabpanel">
                                                     <div class="axil-dashboard-address">
                                                         <!-- <p class="notice-text">.</p> -->
-                                                        <a href="#" onclick="return false;" (click)="newAddress()">NUEVA DIRECCIÓN +</a>
+                                                        <a class="text-white" href="#" onclick="return false;" (click)="newAddress()">NUEVA DIRECCIÓN +</a>
                                                         <div class="row row--30">
                                                             <ng-container *ngFor="let list_address of listAdressClient;let i=index">
                                                                 <div class="col-lg-6">
                                                                     <div class="address-info mb--40">
                                                                         <div class="addrss-header d-flex align-items-center justify-content-between">
-                                                                            <h4 class="title mb-0">Dirección: #{{ i+1 }}</h4>
+                                                                            <h4 class="title mb-0 text-white">Dirección: #{{ i+1 }}</h4>
                                                                             <a href="#" onclick="return false;" class="address-edit" (click)="addressClientSelected(list_address)"><i class="far fa-edit"></i></a>
                                                                         </div>
                                                                         <ul class="address-details">
@@ -199,25 +194,25 @@
                                                 </div>
                                             </div>
                                             <div class="axil-checkout-billing">
-                                                <h4 class="title mb--40">Detalles de envío</h4>
+                                                <h4 class="title mb--40 text-white">Detalles de envío</h4>
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Nombre(s)<span>*</span></label>
+                                                            <label class="text-black">Nombre(s)<span>*</span></label>
                                                             <input type="text" id="first-name" [(ngModel)]="name" name="name" placeholder="">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Apellidos<span>*</span></label>
+                                                            <label class="text-black">Apellidos<span>*</span></label>
                                                             <input type="text" id="last-name" [(ngModel)]="surname" name="surname" placeholder="">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Pais <span>*</span></label>
-                                                    <select id="Region" [(ngModel)]="pais" name="pais">
-                                                        <option value="Peru">México</option>
+                                                    <label class="text-black">Pais <span>*</span></label>
+                                                    <select class="text-white" id="Region" [(ngModel)]="pais" name="pais">
+                                                        <option value="México">México</option>
                                                         <!-- <option value="Argentina">Argentina</option>
                                                         <option value="Colombia">Colombia</option>
                                                         <option value="Chile">Chile</option>
@@ -225,28 +220,28 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Dirección <span>*</span></label>
+                                                    <label class="text-black">Dirección <span>*</span></label>
                                                     <input type="text" id="address1" class="mb--15" [(ngModel)]="address" name="address" placeholder="">
                                                     <input type="text" id="address2" [(ngModel)]="referencia" name="referencia" placeholder="">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Código Postal</label>
+                                                    <label class="text-black">Código Postal</label>
                                                     <input type="text" [(ngModel)]="region" name="region" id="country">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Estado <span>*</span></label>
+                                                    <label class="text-black">Estado <span>*</span></label>
                                                     <input type="text" [(ngModel)]="ciudad" name="ciudad" id="town">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Telefono <span>*</span></label>
+                                                    <label class="text-black">Telefono <span>*</span></label>
                                                     <input type="tel" [(ngModel)]="telefono" name="telefono" id="phone">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Correo Electrónico <span>*</span></label>
+                                                    <label class="text-black">Correo Electrónico <span>*</span></label>
                                                     <input type="email" [(ngModel)]="email" name="email" id="email">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Notas (optional)</label>
+                                                    <label class="text-black">Notas (opcional)</label>
                                                     <textarea id="notes" rows="2" [(ngModel)]="nota" name="nota" placeholder=""></textarea>
                                                 </div>
                                                 <button type="button" *ngIf="!address_client_selected" (click)="store()" class="axil-btn btn-bg-primary checkout-btn">REGISTRAR DIRECCIÓN</button>
@@ -263,30 +258,30 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <label>Nombre(s)</label>
+                                                        <label class="text-black">Nombre(s)</label>
                                                         <input type="text" class="form-control"  [(ngModel)]="name_c" name="name_c">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
-                                                        <label>Apellidos</label>
+                                                        <label class="text-black">Apellidos</label>
                                                         <input type="text" class="form-control"  [(ngModel)]="surname_c" name="surname_c">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group mb--40">
-                                                        <label>Correo Electrónico:</label>
+                                                        <label class="text-black">Correo Electrónico:</label>
                                                         <input type="text" class="form-control"  [(ngModel)]="email_c" name="email_c">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <h5 class="title">Cambiar Contraseña</h5>
+                                                    <h5 class="title text-white">Cambiar Contraseña</h5>
                                                     <div class="form-group">
-                                                        <label>Nueva Contraseña</label>
+                                                        <label class="text-black">Nueva Contraseña</label>
                                                         <input type="password" [(ngModel)]="password" name="password" class="form-control">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Confirmar Contraseña</label>
+                                                        <label class="text-black">Confirmar Contraseña</label>
                                                         <input type="password" [(ngModel)]="password_repet" name="password_repet" class="form-control">
                                                     </div>
                                                     <div class="form-group mb--0">
@@ -311,14 +306,6 @@
         <div class="container">
             <div class="etrade-newsletter-wrapper bg_image bg_image--11">
                 <div class="newsletter-content">
-                    <!-- <span class="title-highlighter highlighter-primary2"><i class="fas fa-envelope-open"></i>Correo</span> -->
-                    <!-- <h2 class="title mb--40 mb_sm--30">¿Quieres más información?</h2> -->
-                    <!-- <div class="input-group newsletter-form">
-                        <div class="position-relative newsletter-inner mb--15">
-                            <input placeholder="example@gmail.com" type="text">
-                        </div>
-                        <button type="submit" class="axil-btn mb--15">Contáctanos</button>
-                    </div> -->
                 </div>
             </div>
         </div>

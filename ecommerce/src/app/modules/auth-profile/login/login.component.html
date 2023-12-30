@@ -8,8 +8,8 @@
           </div>
           <div class="col-sm-8">
               <div class="singin-header-btn">
-                  <p>¿Necesitas algo?</p>
-                  <a href="sign-up.html" class="axil-btn btn-bg-secondary sign-up-btn">Regístrate</a>
+                  <p class="text-white">¿Aún no tienes cuenta?</p>
+                  <a href="/auth/registro" class="axil-btn btn-bg-secondary sign-up-btn">Regístrate</a>
               </div>
           </div>
       </div>
@@ -25,20 +25,20 @@
       <div class="col-lg-6 offset-xl-2">
           <div class="axil-signin-form-wrap">
               <div class="axil-signin-form">
-                  <h3 class="title">Iniciar Sesión.</h3>
-                  <p class="b2 mb--55">Ingresa...</p>
+                  <h3 class="title text-white">Iniciar Sesión.</h3>
+                  <p class="b2 mb--55 text-white">Ingresa...</p>
                   <form class="singin-form">
                       <div class="form-group">
-                          <label>Correo Electrónico</label>
+                          <label class="text-black">Correo Electrónico</label>
                           <input type="email" class="form-control" [(ngModel)]="email" name="email" >
                       </div>
                       <div class="form-group">
-                          <label>Contraseña</label>
+                          <label class="text-black">Contraseña</label>
                           <input type="password" class="form-control" [(ngModel)]="password" name="password" >
                       </div>
                       <div class="form-group d-flex align-items-center justify-content-between">
                           <button type="submit" class="axil-btn btn-bg-primary submit-btn" (click)="login()">INGRESAR</button>
-                          <a href="forgot-password.html" class="forgot-btn">¿Olvidaste tu contraseña?</a>
+                          <a href="https://www.jaknet.com.mx/contacto" class="forgot-btn">¿Olvidaste tu contraseña?</a>
                       </div>
                   </form>
               </div>

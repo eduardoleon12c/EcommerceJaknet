@@ -81,9 +81,9 @@ export class LandingProductComponent implements OnInit {
   }
   getCalNewPrice(product:any){
     // if(this.FlashSale.type_discount == 1){
-    //   return product.price_soles - product.price_soles*this.FlashSale.discount*0.01;
+    //   return product.price_pesos - product.price_pesos*this.FlashSale.discount*0.01;
     // }else{
-    //   return product.price_soles - this.FlashSale.discount;
+    //   return product.price_pesos - this.FlashSale.discount;
     // }
     return 0;
   }
