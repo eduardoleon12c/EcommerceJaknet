@@ -1,10 +1,17 @@
 export default {
     product_list: (product,variedades = [],avg_review = 0,count_review = 0,CampaingDiscount = null) => {
         var IMAGEN_TWO = "";
-        let GALERIAS = product.galerias.map((galeria) => {
-            galeria.imagen = 'http://localhost:3000'+'/api/products/uploads/product/'+galeria.imagen;//*
-            return galeria;
-        });
+        let GALERIAS = [];
+        if(product.galerias && product.galerias.length >0){
+            GALERIAS = product.galerias.map((galeria) =>{
+                galeria.imagen = process.env.URL_BACKEND+'/api/products/uploads/product/'+galeria.imagen;//*
+                return galeria;
+            })
+        }
+        // let GALERIAS = product.galerias.map((galeria) => {
+        //     galeria.imagen = process.env.URL_BACKEND+'/api/products/uploads/product/'+galeria.imagen;//*
+        //     return galeria;
+        // });
         var VAL = Math.floor(Math.random() * 3);//0,1,2
         IMAGEN_TWO = GALERIAS[VAL].imagen;
         return {
@@ -12,7 +19,7 @@ export default {
             title: product.title,
             sku: product.sku,
             slug: product.slug,
-            imagen: 'http://localhost:3000'+'/api/products/uploads/product/'+product.portada,//*
+            imagen: process.env.URL_BACKEND+'/api/products/uploads/product/'+product.portada,//*
             categorie: product.categorie,
             price_pesos: product.price_pesos,
             price_usd: product.price_usd,

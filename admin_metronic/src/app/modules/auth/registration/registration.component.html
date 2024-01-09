@@ -11,10 +11,10 @@
     <!--begin::Title-->
     <div class="pb-13 pt-lg-0 pt-5">
       <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">
-        Sign Up
+        Registro
       </h3>
       <p class="text-muted font-weight-bold font-size-h4">
-        Enter your details to create your account
+        Ingresa datos para registrar
       </p>
     </div>
     <!--end::Title-->
@@ -24,14 +24,14 @@
       <div
         class="mb-10 alert alert-custom alert-light-danger alert-dismissible"
       >
-        <div class="alert-text">The registration details are incorrect</div>
+        <div class="alert-text">Los datos están incorrectos</div>
       </div>
     </ng-container>
     <!-- end::Alert error-->
 
     <!--begin::Form group-->
     <div class="form-group">
-      <label class="font-size-h6 font-weight-bolder text-dark">Fullname</label>
+      <label class="font-size-h6 font-weight-bolder text-dark">Nombre</label>
       <input
         class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
         type="text"
@@ -120,7 +120,7 @@
     <!--begin::Form group-->
     <div class="form-group">
       <label class="font-size-h6 font-weight-bolder text-dark pt-5"
-        >Password</label
+        >Contraseña</label
       >
       <input
         class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
@@ -163,7 +163,7 @@
     <!--begin::Form group-->
     <div class="form-group">
       <label class="font-size-h6 font-weight-bolder text-dark pt-5"
-        >Confirm Password</label
+        >Confirmar Contraseña</label
       >
       <input
         class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6"
@@ -208,7 +208,7 @@
       >
         <div class="fv-plugins-message-container">
           <div class="fv-help-block">
-            'Passsword' and 'Confirm Password' didn't match.
+            Las contraseñas no coinciden.
           </div>
         </div>
       </ng-container>
@@ -239,7 +239,7 @@
         "
         class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4"
       >
-        Submit
+        Crear
       </button>
       <a
         routerLink="/auth/login"
@@ -247,7 +247,7 @@
         id="kt_login_signup_cancel"
         class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3"
       >
-        Cancel
+        Cancelar
       </a>
 
       <ng-container *ngIf="isLoading$ | async">
